@@ -20,9 +20,11 @@ import Link from "@mui/material/Link";
 import { ClassNames } from "@emotion/react";
 import useStyles from "./components/styles";
 import { createTheme, makeStyles } from "@material-ui/core/styles";
-
+import Searchbar from "./components/Searchbar";
 import Footer from "./components/Footer";
 import CocktailGrid from "./components/CocktailGrid";
+import { Search } from "@mui/icons-material";
+// import SearchCocktails from "./components/SearchCocktails";
 
 const theme = createTheme();
 
@@ -33,26 +35,17 @@ function App() {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         {" "}
-        <AppBar color='info' position='relative'>
+        <AppBar color='primary' position='relative'>
           <Toolbar>
             <LocalBarIcon className={classes.icon} />
             <Link underline='hover' color='inherit' href='#'>
               Home
             </Link>
-            <Link
-              underline='hover'
-              color='inherit'
-              to='/Browse'
-              variant='H6'
-              margin='10px'
-            >
-              Browse
-            </Link>
           </Toolbar>
         </AppBar>
         <main>
           <div className={classes.container}>
-            <Container maxWidth='sm' style={{ marginTop: "100px" }}>
+            <Container maxWidth='sm' style={{ marginTop: "80px" }}>
               <Typography
                 variant='h2'
                 align='center'
@@ -91,6 +84,7 @@ function App() {
                 </Grid>
               </div>
               <Container></Container>
+              <Searchbar />
               <CocktailGrid />
               <Footer />
             </Container>

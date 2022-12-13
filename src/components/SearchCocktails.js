@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import axios from "axios";
-// import ImageButton from "./ImageButton";
-// import Browse from "./pages/Browse";
 import { Link } from "react-router-dom";
-import App from "../App";
+import Cocktail from "./Cocktail";
 import CocktailGrid from "./CocktailGrid";
 
 const SearchCocktails = ({
@@ -66,7 +64,7 @@ const SearchCocktails = ({
   };
 
   return (
-    <Stack alignItems='Center' mt='37px' justifyContent='center' p='20'>
+    <Stack alignItems='Center' justifyContent='center' p='20'>
       <Typography
         fontWeight={200}
         sx={{ fontSize: { lg: "44px", xs: "30px" } }}
@@ -75,48 +73,29 @@ const SearchCocktails = ({
       >
         Classic Cocktails <br /> you should know how to make.
       </Typography>
-      <Box position='relative' mb='72px'>
+      <Box position='relative'>
         <TextField
-          // id='outlined-basic'
-          // label='Search Cocktails'
-          // variant='outlined'
-          sx={{
-            input: {
-              fontWeight: "700",
-              border: "none",
-              borderRadius: "4px",
-            },
-            width: { lg: "800px", xs: "350px" },
-            backgroundColor: "#fff",
-            borderRadius: "40px",
-          }}
+          id='searchBar'
+          label='Search Cocktails'
+          variant='filled'
           height='76px'
           value={search}
           onChange={(e) => setSearch(e.target.value.toLowerCase())}
           placeholder='Search Cocktails'
           type='text'
         />
-        <Link to='/browse'>
-          <Button
-            className='search-btn'
-            sx={{
-              bgcolor: "#0083db",
-              color: "#fff",
-              textTransform: "none",
-              width: { lg: "175px", xs: "80px" },
-              fontSize: { lg: "20px", xs: "14px" },
-              height: "56px",
-              position: "absolute",
-              right: "0",
-            }}
-          >
-            Search
-          </Button>
-        </Link>
+        <Button variant='contained' color='primary' className='search-btn'>
+          Search
+        </Button>
       </Box>
 
       <Box sx={{ position: "relative", width: "100%", padding: "20px" }}>
         <CocktailGrid
+          data={cocktails}
+          cocktail={cocktail}
+          setCocktail={setCocktail}
+        />
+        <Cocktail
           data={cocktails}
           cocktail={cocktail}
           setCocktail={setCocktail}
