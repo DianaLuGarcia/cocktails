@@ -23,12 +23,31 @@ import { createTheme, makeStyles } from "@material-ui/core/styles";
 import Searchbar from "./components/Searchbar";
 import Footer from "./components/Footer";
 import CocktailGrid from "./components/CocktailGrid";
+import ModalRecipe from "./components/ModalRecipe";
 import { Search } from "@mui/icons-material";
+import PopularCocktails from "./components/PopularCocktails";
+import { useState } from "react";
+import axios from "axios";
 // import SearchCocktails from "./components/SearchCocktails";
 
 const theme = createTheme();
 
 function App() {
+  const [cocktails, setCocktails] = useState([]);
+
+  async function pop() {
+    const popularDrinks = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/popular.php`
+    );
+    setCocktails(popularDrinks.data.drinks);
+  }
+  async function random() {
+    const randomDrink = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/random.php`
+    );
+    setCocktails(randomDrink.data.drinks);
+  }
+
   const classes = useStyles(theme);
   return (
     <>
@@ -68,7 +87,7 @@ function App() {
               <div className={classes.button}>
                 <Grid container spacing={2} justifyContent='center'>
                   <Grid item>
-                    <Button variant='contained' color='primary'>
+                    <Button variant='contained' color='primary' onClick={pop}>
                       Popular Cocktails
                     </Button>
                   </Grid>
@@ -77,6 +96,7 @@ function App() {
                       variant='contained'
                       color='primary'
                       startIcon={<MoodIcon />}
+                      onClick={random}
                     >
                       I'm feeling lucky
                     </Button>
@@ -84,8 +104,10 @@ function App() {
                 </Grid>
               </div>
               <Container></Container>
-              <Searchbar />
-              <CocktailGrid />
+              <Searchbar cocktails={cocktails} setCocktails={setCocktails} />
+              <CocktailGrid cocktails={cocktails} />
+              <ModalRecipe cocktails={cocktails} />
+              <PopularCocktails />
               <Footer />
             </Container>
           </div>

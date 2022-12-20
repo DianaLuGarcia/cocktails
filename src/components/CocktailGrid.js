@@ -18,23 +18,25 @@ import ModalRecipe from "./ModalRecipe";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const theme = createTheme();
-const CocktailGrid = ({ data, cocktails, setCocktails }) => {
+
+const CocktailGrid = ({ cocktails }) => {
   const classes = useStyles(theme);
+  console.log(cocktails);
   return (
     <>
       <Container className={classes.cardGrid} maxWidth='md'>
         <Grid container spacing={4}>
-          {cards.map((item, card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
+          {cocktails.map((item, index) => (
+            <Grid item key={item.idDrink} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
-                  title={`${item.strDrink}`}
-                  image='https://source.unsplash.com/random'
+                  title={item.strDrink}
+                  image={item.strDrinkThumb}
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant='h6'>
-                    item.strDrink
+                    {item.strDrink}
                   </Typography>
                 </CardContent>
                 <CardActions>

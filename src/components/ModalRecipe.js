@@ -11,14 +11,14 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-30%, -30%)",
-  width: 400,
+  width: 450,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-export default function ModalRecipe() {
+const ModalRecipe = ({ cocktails }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -29,6 +29,7 @@ export default function ModalRecipe() {
         Recipe
       </Button>
       <Modal
+        align='center'
         aria-labelledby='transition-modal-title'
         aria-describedby='transition-modal-description'
         open={open}
@@ -44,8 +45,8 @@ export default function ModalRecipe() {
             <img
               src='https://source.unsplash.com/random'
               alt=''
-              width='200'
-              height='200'
+              width='350'
+              height='450'
               align='center'
             />
             <Typography id='transition-modal-title' variant='h6' component='h2'>
@@ -59,4 +60,6 @@ export default function ModalRecipe() {
       </Modal>
     </div>
   );
-}
+};
+
+export default ModalRecipe;

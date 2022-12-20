@@ -31,6 +31,7 @@ const SearchCocktails = ({
       );
 
       console.log("popularDrinks: ", popularDrinks);
+
       //adding the data from both GET calls
       const searchResults = [
         ...drinks.data.drinks,

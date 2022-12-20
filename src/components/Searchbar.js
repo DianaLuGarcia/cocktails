@@ -14,8 +14,11 @@ import {
 import OutlinedInput from "@mui/material/OutlinedInput";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
+import CocktailGrid from "./CocktailGrid";
+// import ModalRecipe from "./ModalRecipe";
 import { Box } from "@material-ui/core";
 import axios from "axios";
+
 const theme = createTheme();
 
 const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
@@ -34,16 +37,11 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
         `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?i=${search}`
       );
 
-      const popularDrinks = await axios.get(
-        `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/popular.php`
-      );
-      console.log("popularDrinks: ", popularDrinks);
-
       //adding the data from both GET calls
       const searchResults = [
         ...drinks.data.drinks,
         ...drinkIngredients.data.drinks,
-        ...popularDrinks.data.drinks,
+        // ...popularDrinks.data.drinks,
       ];
 
       //Checks for ID duplicates within searchResults, assigns to uniqueSearchResults
@@ -66,9 +64,9 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       setCocktails(uniqueSearchResults);
       console.log("search:", search);
     }
-    if (search.status === 200) {
-      return search.json();
-    }
+    // if (search.status === 200) {
+    //   return search.json();
+    // }
   };
 
   return (
@@ -104,7 +102,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
                 onChange={(e) => setSearch(e.target.value.toLowerCase())}
                 onKeyPress={(event) => {
                   if (event.key === "Enter") {
-                    this.search();
+                    handleSearch();
                   }
                 }}
               />
