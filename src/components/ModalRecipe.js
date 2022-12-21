@@ -5,6 +5,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import CocktailGrid from "./CocktailGrid";
 
 const style = {
   position: "absolute",
@@ -22,7 +23,7 @@ const ModalRecipe = ({ cocktails }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  console.log("Modal", cocktails);
   return (
     <div>
       <Button size='small' color='primary' onClick={handleOpen}>
@@ -40,6 +41,7 @@ const ModalRecipe = ({ cocktails }) => {
           timeout: 500,
         }}
       >
+        {/* {cocktails.map((item, index) => ( */}
         <Fade in={open}>
           <Box sx={style}>
             <img
@@ -57,6 +59,7 @@ const ModalRecipe = ({ cocktails }) => {
             </Typography>
           </Box>
         </Fade>
+        {/* // ))} */}
       </Modal>
     </div>
   );

@@ -23,7 +23,7 @@ import { createTheme, makeStyles } from "@material-ui/core/styles";
 import Searchbar from "./components/Searchbar";
 import Footer from "./components/Footer";
 import CocktailGrid from "./components/CocktailGrid";
-import ModalRecipe from "./components/ModalRecipe";
+// import ModalRecipe from "./components/ModalRecipe";
 import { Search } from "@mui/icons-material";
 import PopularCocktails from "./components/PopularCocktails";
 import { useState } from "react";
@@ -47,6 +47,7 @@ function App() {
     );
     setCocktails(randomDrink.data.drinks);
   }
+  window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
 
   const classes = useStyles(theme);
   return (
@@ -106,7 +107,7 @@ function App() {
               <Container></Container>
               <Searchbar cocktails={cocktails} setCocktails={setCocktails} />
               <CocktailGrid cocktails={cocktails} />
-              <ModalRecipe cocktails={cocktails} />
+              {/* <ModalRecipe cocktails={cocktails} /> */}
               <PopularCocktails />
               <Footer />
             </Container>

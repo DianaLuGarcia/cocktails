@@ -58,7 +58,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       console.log("Search Results", searchResults);
       console.log("Search Results Unique", uniqueSearchResults);
 
-      window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
+      window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
 
       setSearch(" ");
       setCocktails(uniqueSearchResults);

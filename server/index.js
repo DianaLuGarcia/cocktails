@@ -9,7 +9,7 @@ const { Sequelize } = require("sequelize");
 const app = express();
 
 const { PORT, CONNECTION_STRING } = process.env;
-console.log({ PORT, CONNECTION_STRING });
+console.log("port", { PORT, CONNECTION_STRING });
 
 //MIDDLEWARE
 app.use(express.json());

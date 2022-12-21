@@ -20,13 +20,15 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     padding: "60px 0",
   },
-  card: {
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-  },
+  // card: {
+  //   height: "100%",
+  //   display: "flex",
+  //   flexDirection: "column",
+  // },
   cardMedia: {
-    paddingTop: "56.25%", //16:9
+    // paddingTop: "56.25%", //16:9
+    paddingTop: "65%", //16:9
+    radius: "8px",
   },
   cardContent: {
     flexGrow: 1,
