@@ -30,7 +30,7 @@ const theme = createTheme();
 //   }),
 // }));
 
-const CocktailGrid = ({ cocktails }) => {
+const CocktailGrid = ({ cocktails, setCocktails }) => {
   const classes = useStyles(theme);
 
   const [expanded, setExpanded] = React.useState(true);
@@ -45,8 +45,10 @@ const CocktailGrid = ({ cocktails }) => {
     for (let i = 1; i < 16; i++) {
       if (item[`strIngredient${i}`]) {
         ingredients.push(
-          <p>{`${item[`strIngredient${i}`]} -
-     ${item[`strMeasure${i}`]}`}</p>
+          <Typography className={classes.typography}>{`${
+            item[`strIngredient${i}`]
+          } -
+     ${item[`strMeasure${i}`]}`}</Typography>
         );
       }
     }
@@ -65,6 +67,7 @@ const CocktailGrid = ({ cocktails }) => {
                   className={classes.cardMedia}
                   title={item.strDrink}
                   image={item.strDrinkThumb}
+                  loading='lazy'
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography align='left' gutterBottom variant='h6'>
@@ -77,10 +80,14 @@ const CocktailGrid = ({ cocktails }) => {
                 </Button>
                 <Collapse in={!expanded}>
                   <div>
-                    <p>Ingredients:</p>
+                    <Typography className={classes.typography}>
+                      Ingredients:
+                    </Typography>
                     {renderIngredients(item)}
 
-                    <Typography>{item.strInstructions}</Typography>
+                    <Typography className={classes.typography}>
+                      {item.strInstructions}
+                    </Typography>
                   </div>
                 </Collapse>
               </Card>

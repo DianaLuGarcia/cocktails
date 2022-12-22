@@ -1,12 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
 import {
   Typography,
   AppBar,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
   CssBaseline,
   Grid,
   Toolbar,
@@ -26,6 +21,8 @@ import CocktailGrid from "./components/CocktailGrid";
 // import ModalRecipe from "./components/ModalRecipe";
 import { Search } from "@mui/icons-material";
 import PopularCocktails from "./components/PopularCocktails";
+import AllCocktails from "./components/AllCocktails";
+import MocktailsCocktails from "./components/MocktailCocktails";
 import { useState } from "react";
 import axios from "axios";
 // import SearchCocktails from "./components/SearchCocktails";
@@ -43,10 +40,23 @@ function App() {
   }
   async function random() {
     const randomDrink = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/random.php`
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/randomselection.php`
     );
     setCocktails(randomDrink.data.drinks);
   }
+  async function all() {
+    const allDrinks = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Alcoholic`
+    );
+    setCocktails(allDrinks.data.drinks);
+  }
+  async function mock() {
+    const MockDrinks = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Non_Alcoholic`
+    );
+    setCocktails(MockDrinks.data.drinks);
+  }
+
   window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
 
   const classes = useStyles(theme);
@@ -86,10 +96,20 @@ function App() {
                 to create your favorite cocktails!{" "}
               </Typography>
               <div className={classes.button}>
-                <Grid container spacing={2} justifyContent='center'>
+                <Grid container spacing={4} justifyContent='center'>
                   <Grid item>
                     <Button variant='contained' color='primary' onClick={pop}>
                       Popular Cocktails
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant='contained' color='primary' onClick={all}>
+                      All Cocktails
+                    </Button>
+                  </Grid>
+                  <Grid item>
+                    <Button variant='contained' color='primary' onClick={mock}>
+                      Non Alcoholic
                     </Button>
                   </Grid>
                   <Grid item>
@@ -106,9 +126,11 @@ function App() {
               </div>
               <Container></Container>
               <Searchbar cocktails={cocktails} setCocktails={setCocktails} />
-              <CocktailGrid cocktails={cocktails} />
+              <CocktailGrid cocktails={cocktails} setCocktails={setCocktails} />
               {/* <ModalRecipe cocktails={cocktails} /> */}
               <PopularCocktails />
+              <AllCocktails />
+              <MocktailsCocktails />
               <Footer />
             </Container>
           </div>

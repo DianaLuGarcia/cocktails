@@ -20,11 +20,12 @@ const useStyles = makeStyles((theme) => ({
   cardGrid: {
     padding: "60px 0",
   },
-  // card: {
-  //   height: "100%",
-  //   display: "flex",
-  //   flexDirection: "column",
-  // },
+  card: {
+    // height: "100%",
+    backgroundColor: theme.palette.action.hover,
+    display: "flex",
+    flexDirection: "column",
+  },
   cardMedia: {
     // paddingTop: "56.25%", //16:9
     paddingTop: "65%", //16:9
@@ -43,6 +44,11 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+  },
+  typography: {
+    font: "-apple-system",
+    padding: "1em",
+    fontWeight: 500,
   },
 }));
 

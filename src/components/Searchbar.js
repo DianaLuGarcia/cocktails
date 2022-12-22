@@ -15,7 +15,6 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 import CocktailGrid from "./CocktailGrid";
-// import ModalRecipe from "./ModalRecipe";
 import { Box } from "@material-ui/core";
 import axios from "axios";
 
