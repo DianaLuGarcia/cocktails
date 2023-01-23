@@ -51,11 +51,14 @@ function App() {
     setCocktails(allDrinks.data.drinks);
   }
   async function mock() {
+    // const MockDrinks = await axios.get(
+    //   `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Non_Alcoholic`
+    // );
     const MockDrinks = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Non_Alcoholic`
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Alcoholic`
     );
     setCocktails(MockDrinks.data.drinks);
-  }
+  } //not showing ingredients because the object for non alcoholic does not have it?
 
   window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
 
@@ -65,14 +68,14 @@ function App() {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         {" "}
-        <AppBar color='primary' position='relative'>
+        {/* <AppBar color='primary' position='relative'>
           <Toolbar>
-            <LocalBarIcon className={classes.icon} />
-            <Link underline='hover' color='inherit' href='#'>
+            <LocalBarIcon className={classes.icon} /> */}
+        {/* <Link underline='hover' color='inherit' href='#'>
               Home
-            </Link>
-          </Toolbar>
-        </AppBar>
+            </Link> */}
+        {/* </Toolbar> */}
+        {/* </AppBar> */}
         <main>
           <div className={classes.container}>
             <Container maxWidth='sm' style={{ marginTop: "80px" }}>

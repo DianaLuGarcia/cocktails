@@ -11,7 +11,7 @@ const AllCocktails = () => {
         `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Alcoholic`
       )
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setAll(response.data);
       });
   }, []);

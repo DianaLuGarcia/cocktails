@@ -9,6 +9,7 @@ import {
   Button,
   createTheme,
   Collapse,
+  CardActions,
 } from "@mui/material";
 import useStyles from "./styles";
 import { styled } from "@mui/material/styles";
@@ -19,22 +20,21 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const theme = createTheme();
 
-// const ExpandMore = styled((props) => {
-//   const { expand, ...other } = props;
-//   return <IconButton {...other} />;
-// })(({ theme, expand }) => ({
-//   transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-//   marginLeft: "auto",
-//   transition: theme.transitions.create("transform", {
-//     duration: theme.transitions.duration.shortest,
-//   }),
-// }));
+//expand more animation
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} />;
+})(({ theme, expand }) => ({
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
 
 const CocktailGrid = ({ cocktails, setCocktails }) => {
   const classes = useStyles(theme);
-
   const [expanded, setExpanded] = React.useState(true);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -55,7 +55,7 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
     return ingredients;
   };
 
-  console.log(cocktails);
+  // console.log("Ingredients", cocktails);
   return (
     <>
       <Container className={classes.cardGrid} maxWidth='md'>
@@ -74,17 +74,35 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
                     {item.strDrink}
                   </Typography>
                 </CardContent>
-
-                <Button onClick={handleExpandClick}>
-                  <ExpandMoreIcon />
-                </Button>
+                <CardActions>
+                  <ExpandMore
+                    expand={expanded}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                    aria-label='show more'
+                  >
+                    <ExpandMoreIcon />
+                  </ExpandMore>
+                </CardActions>
                 <Collapse in={!expanded}>
                   <div>
-                    <Typography className={classes.typography}>
+                    <Typography
+                      className={classes.typography}
+                      fontWeight='bold'
+                      marginBottom='16px'
+                    >
                       Ingredients:
                     </Typography>
                     {renderIngredients(item)}
-
+                    <Typography
+                      className={classes.typography}
+                      fontWeight='bold'
+                      marginTop='16px'
+                      marginBottom='16px'
+                    >
+                      {" "}
+                      Instructions:
+                    </Typography>
                     <Typography className={classes.typography}>
                       {item.strInstructions}
                     </Typography>

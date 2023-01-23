@@ -4,7 +4,7 @@ export const cocktailOptions = {
 
 export const fetchData = async (url, options) => {
   const response = await fetch(url, options);
-  console.log(response.body);
+  // console.log(response.body);
   const data = await response.json();
 
   return data;

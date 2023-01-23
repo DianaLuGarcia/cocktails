@@ -11,7 +11,7 @@ const PopularCocktails = () => {
         `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/popular.php`
       )
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setPopular(response.data);
       });
   }, []);

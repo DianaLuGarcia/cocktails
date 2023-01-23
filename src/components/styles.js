@@ -49,6 +49,8 @@ const useStyles = makeStyles((theme) => ({
     font: "-apple-system",
     padding: "1em",
     fontWeight: 500,
+    lineHeight: "normal",
+    marginLeft: "1em",
   },
 }));
 

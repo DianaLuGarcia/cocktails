@@ -54,14 +54,14 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
         }
       });
 
-      console.log("Search Results", searchResults);
-      console.log("Search Results Unique", uniqueSearchResults);
+      // console.log("Search Results", searchResults);
+      // console.log("Search Results Unique", uniqueSearchResults);
 
       window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
 
       setSearch(" ");
       setCocktails(uniqueSearchResults);
-      console.log("search:", search);
+      // console.log("search:", search);
     }
     // if (search.status === 200) {
     //   return search.json();
