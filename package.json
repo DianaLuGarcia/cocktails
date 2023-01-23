@@ -2,7 +2,7 @@
   "name": "happyhour",
   "version": "0.1.0",
   "private": true,
-  "homepage" https://dianalugarcia.github.io/cocktails.github.io/,
+  "homepage" "https://dianalugarcia.github.io/cocktails.github.io/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
