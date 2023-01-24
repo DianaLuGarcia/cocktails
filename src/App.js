@@ -95,7 +95,7 @@ function App() {
                 id='heading'
                 gutterBottom
               >
-                Happy Hour
+                its FINALLY Happy Hour
               </Typography>
               <Typography
                 variant='h5'
