@@ -23,6 +23,7 @@ import { Search } from "@mui/icons-material";
 import PopularCocktails from "./components/PopularCocktails";
 import AllCocktails from "./components/AllCocktails";
 import MocktailsCocktails from "./components/MocktailCocktails";
+
 import { useState } from "react";
 import axios from "axios";
 // import SearchCocktails from "./components/SearchCocktails";
@@ -46,19 +47,27 @@ function App() {
   }
   async function all() {
     const allDrinks = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Alcoholic`
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/search.php?s=`
+      // `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Alcoholic`
     );
     setCocktails(allDrinks.data.drinks);
   }
-  async function mock() {
-    // const MockDrinks = await axios.get(
-    //   `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Non_Alcoholic`
-    // );
-    const MockDrinks = await axios.get(
-      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Alcoholic`
+
+  async function latest() {
+    const latestDrinks = await axios.get(
+      `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/latest.php`
     );
-    setCocktails(MockDrinks.data.drinks);
-  } //not showing ingredients because the object for non alcoholic does not have it?
+    setCocktails(latestDrinks.data.drinks);
+  }
+  // async function mock() {
+  // const MockDrinks = await axios.get(
+  //   `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Non_Alcoholic`
+  // );
+  //   const MockDrinks = await axios.get(
+  //     `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?a=Alcoholic`
+  //   );
+  //   setCocktails(MockDrinks.data.drinks);
+  // } //not showing ingredients because the object for non alcoholic does not have it?
 
   window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
 
@@ -78,7 +87,7 @@ function App() {
         {/* </AppBar> */}
         <main>
           <div className={classes.container}>
-            <Container maxWidth='sm' style={{ marginTop: "80px" }}>
+            <Container maxWidth='sm' style={{ marginTop: "100px" }}>
               <Typography
                 variant='h2'
                 align='center'
@@ -94,10 +103,12 @@ function App() {
                 color='textSecondary'
                 id='headingParagraph'
                 paragraph
+                marginBottom='2em'
               >
                 The best hour is always happy hour. Find easy and unique recipes
                 to create your favorite cocktails!{" "}
               </Typography>
+              <Searchbar cocktails={cocktails} setCocktails={setCocktails} />
               <div className={classes.button}>
                 <Grid container spacing={4} justifyContent='center'>
                   <Grid item>
@@ -106,13 +117,17 @@ function App() {
                     </Button>
                   </Grid>
                   <Grid item>
-                    <Button variant='contained' color='primary' onClick={all}>
-                      All Cocktails
+                    <Button
+                      variant='contained'
+                      color='primary'
+                      onClick={latest}
+                    >
+                      Latest Drinks
                     </Button>
                   </Grid>
                   <Grid item>
-                    <Button variant='contained' color='primary' onClick={mock}>
-                      Non Alcoholic
+                    <Button variant='contained' color='primary' onClick={all}>
+                      All Cocktails
                     </Button>
                   </Grid>
                   <Grid item>
@@ -128,8 +143,9 @@ function App() {
                 </Grid>
               </div>
               <Container></Container>
-              <Searchbar cocktails={cocktails} setCocktails={setCocktails} />
+
               <CocktailGrid cocktails={cocktails} setCocktails={setCocktails} />
+
               {/* <ModalRecipe cocktails={cocktails} /> */}
               <PopularCocktails />
               <AllCocktails />

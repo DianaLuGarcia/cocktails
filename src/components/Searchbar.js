@@ -86,8 +86,8 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
               <TextField
                 fullWidth
                 id='standard-search'
-                placeholder='Try searching "Vodka"'
-                type='search'
+                placeholder='Try searching "Vodka'
+                variant='outlined'
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position='start'>
@@ -95,8 +95,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
                     </InputAdornment>
                   ),
                 }}
-                sx={{ "& > :not(style)": { m: 1 }, color: "rgba(0, 0, 0.6)" }}
-                variant='outlined'
+                sx={{ "& > :not(style)": { m: 1 } }}
                 value={search}
                 onChange={(e) => setSearch(e.target.value.toLowerCase())}
                 onKeyPress={(event) => {
@@ -104,6 +103,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
                     handleSearch();
                   }
                 }}
+                focused
               />
             </div>
           </Container>

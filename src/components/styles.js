@@ -3,12 +3,14 @@ import {
   createTheme,
   makeStyles,
 } from "@material-ui/core/styles";
+import { grey } from "@mui/material/colors";
 
 const theme = createTheme();
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: theme.palette.background.paper,
+    // backgroundColor: theme.palette.background.paper,
+    backgroundColor: "white",
     padding: theme.spacing(8, 0, 6),
   },
   icon: {
@@ -22,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     // height: "100%",
-    backgroundColor: theme.palette.action.hover,
+    // backgroundColor: theme.palette.action.hover,
+    backgroundColor: "white",
     display: "flex",
     flexDirection: "column",
   },
@@ -34,23 +37,17 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {
     flexGrow: 1,
   },
-  modal: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  },
+
   typography: {
     font: "-apple-system",
     padding: "1em",
     fontWeight: 500,
     lineHeight: "normal",
     marginLeft: "1em",
+
+    strTitleContainer: {
+      backgroundColor: grey,
+    },
   },
 }));
 

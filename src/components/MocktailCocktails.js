@@ -1,5 +1,5 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // const MocktailsCocktails = () => {
 //   // const [data, setData] = useState([])
@@ -17,7 +17,6 @@
 //   }, []);
 // };
 // export default MocktailsCocktails;
-import React from "react";
 
 const MocktailCocktails = () => {
   return <div></div>;

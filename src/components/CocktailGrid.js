@@ -34,9 +34,9 @@ const ExpandMore = styled((props) => {
 
 const CocktailGrid = ({ cocktails, setCocktails }) => {
   const classes = useStyles(theme);
-  const [expanded, setExpanded] = React.useState(true);
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const [expanded, setExpanded] = React.useState(-1);
+  const handleExpandClick = (i) => {
+    setExpanded(expanded === i ? -1 : i);
   };
 
   //loop through the ingredient and measure list
@@ -45,7 +45,7 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
     for (let i = 1; i < 16; i++) {
       if (item[`strIngredient${i}`]) {
         ingredients.push(
-          <Typography className={classes.typography}>{`${
+          <Typography className={classes.typography} lineHeight='1.0'>{`${
             item[`strIngredient${i}`]
           } -
      ${item[`strMeasure${i}`]}`}</Typography>
@@ -70,44 +70,50 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
                   loading='lazy'
                 />
                 <CardContent className={classes.cardContent}>
-                  <Typography align='left' gutterBottom variant='h6'>
-                    {item.strDrink}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <ExpandMore
-                    expand={expanded}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label='show more'
+                  <Container
+                    className={classes.strTitleContainer}
+                    backgroundColor='7B8FA1'
                   >
-                    <ExpandMoreIcon />
-                  </ExpandMore>
-                </CardActions>
-                <Collapse in={!expanded}>
-                  <div>
-                    <Typography
-                      className={classes.typography}
-                      fontWeight='bold'
-                      marginBottom='16px'
+                    <Typography align='center' gutterBottom variant='h6'>
+                      {item.strDrink}
+                    </Typography>
+                  </Container>
+                  <CardActions>
+                    <ExpandMore
+                      expand={expanded}
+                      onClick={() => handleExpandClick(item)}
+                      aria-expanded={expanded === item}
+                      aria-label='show more'
                     >
-                      Ingredients:
-                    </Typography>
-                    {renderIngredients(item)}
-                    <Typography
-                      className={classes.typography}
-                      fontWeight='bold'
-                      marginTop='16px'
-                      marginBottom='16px'
-                    >
-                      {" "}
-                      Instructions:
-                    </Typography>
-                    <Typography className={classes.typography}>
-                      {item.strInstructions}
-                    </Typography>
-                  </div>
-                </Collapse>
+                      <ExpandMoreIcon />
+                    </ExpandMore>
+                  </CardActions>
+                  <Collapse in={expanded === item} timeout='auto' unmountOnExit>
+                    <div>
+                      <Typography
+                        className={classes.typography}
+                        fontWeight='bold'
+                        fontHeight='normal'
+                      >
+                        Ingredients:
+                      </Typography>
+                      {renderIngredients(item)}
+                      <Typography
+                        className={classes.typography}
+                        fontWeight='bold'
+                        fontHeight='normal'
+                        // marginTop='1rem'
+                        // marginBottom='1rem'
+                      >
+                        {" "}
+                        Instructions:
+                      </Typography>
+                      <Typography className={classes.typography}>
+                        {item.strInstructions}
+                      </Typography>
+                    </div>
+                  </Collapse>
+                </CardContent>
               </Card>
             </Grid>
           ))}
