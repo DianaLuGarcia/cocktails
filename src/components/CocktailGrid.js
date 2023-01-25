@@ -15,7 +15,7 @@ import useStyles from "./styles";
 import { styled } from "@mui/material/styles";
 // import ModalRecipe from "./ModalRecipe";
 import IconButton from "@mui/material/IconButton";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const theme = createTheme();
@@ -85,7 +85,7 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
                       aria-expanded={expanded === item}
                       aria-label='show more'
                     >
-                      <ExpandMoreIcon />
+                      <MoreHorizIcon />
                     </ExpandMore>
                   </CardActions>
                   <Collapse in={expanded === item} timeout='auto' unmountOnExit>

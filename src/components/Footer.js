@@ -14,6 +14,7 @@ import {
   createTheme,
 } from "@mui/material";
 import useStyles from "./styles";
+import { Link } from "@material-ui/core";
 const theme = createTheme();
 
 const Footer = () => {
@@ -26,6 +27,14 @@ const Footer = () => {
       </Typography>
       <Typography variant='subtitle1' align='center' color='textSecondary'>
         thecocktaildb.com
+      </Typography>
+
+      <Typography variant='h6' align='center' gutterBottom>
+        {" "}
+        Happy Hour Cocktails Created by
+        <Link href='https://www.linkedin.com/in/diana-lupita-garcia/'>
+          {" Diana Garcia"}
+        </Link>
       </Typography>
     </footer>
   );
