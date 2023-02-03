@@ -70,7 +70,7 @@ function App() {
   //   setCocktails(MockDrinks.data.drinks);
   // } //not showing ingredients because the object for non alcoholic does not have it?
 
-  window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
+  // window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
 
   const classes = useStyles(theme);
   return (
@@ -85,97 +85,112 @@ function App() {
             </Link> */}
         {/* </Toolbar> */}
         {/* </AppBar> */}
-
         <main>
-          <div
-            className='bgImg'
-            // className='overlay'
-            style={{
-              backgroundImage: `url(${background})`,
-
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-              backgroundAttachment: "scroll, scroll, scroll, fixed",
-              position: "relative",
-              height: "auto",
-              width: "100%",
-            }}
-          >
-            <div className={classes.container}>
-              <Container maxWidth='sm' style={{ marginTop: "90px" }}>
-                <Container z>
-                  <Typography
-                    variant='h4'
-                    align='center'
-                    color='textSecondary'
-                    id='heading'
-                    gutterBottom
-                  >
-                    Join us for
-                  </Typography>
-                  <Typography
-                    variant='h2'
-                    align='center'
-                    color='textPrimary'
-                    id='heading'
-                    gutterBottom
-                  >
-                    Happy Hour!
-                  </Typography>
-                  <Typography
-                    variant='h5'
-                    align='center'
-                    color='textSecondary'
-                    id='headingParagraph'
-                    paragraph
-                    marginBottom='2em'
-                  >
-                    The best hour is always happy hour. Find easy and unique
-                    recipes to create your favorite cocktails!{" "}
-                  </Typography>
+          <div className='overlay'>
+            <div
+              id='opacity'
+              className='bgImg'
+              style={{
+                backgroundImage: `url(${background})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                // backgroundAttachment: "scroll, scroll, scroll, fixed",
+                position: "contain",
+                height: "auto",
+                width: "100%",
+                // opacity: "0.5",
+              }}
+            >
+              <div className={classes.container}>
+                <Container maxWidth='sm' style={{ marginTop: "90px" }}>
+                  <Container>
+                    <Typography
+                      variant='h4'
+                      align='center'
+                      color='textSecondary'
+                      id='heading'
+                      gutterBottom
+                    >
+                      Join us for
+                    </Typography>
+                    <Typography
+                      variant='h2'
+                      align='center'
+                      color='textPrimary'
+                      id='heading'
+                      gutterBottom
+                    >
+                      Happy Hour!
+                    </Typography>
+                    <Typography
+                      variant='h5'
+                      align='center'
+                      color='textSecondary'
+                      id='headingParagraph'
+                      paragraph
+                      marginBottom='2em'
+                    >
+                      The best hour is always happy hour. Find easy and unique
+                      recipes to create your favorite cocktails!{" "}
+                    </Typography>
+                  </Container>
+                  <Searchbar
+                    cocktails={cocktails}
+                    setCocktails={setCocktails}
+                  />
+                  <div className={classes.button}>
+                    <Grid container spacing={4} justifyContent='center'>
+                      <Grid item>
+                        <Button
+                          variant='contained'
+                          color='primary'
+                          onClick={pop}
+                        >
+                          Popular Cocktails
+                        </Button>
+                      </Grid>
+                      <Grid item>
+                        <Button
+                          variant='contained'
+                          color='primary'
+                          onClick={latest}
+                        >
+                          Latest Drinks
+                        </Button>
+                      </Grid>
+                      <Grid item>
+                        <Button
+                          variant='contained'
+                          color='primary'
+                          onClick={all}
+                        >
+                          All Cocktails
+                        </Button>
+                      </Grid>
+                      <Grid item>
+                        <Button
+                          variant='contained'
+                          color='primary'
+                          startIcon={<MoodIcon />}
+                          onClick={random}
+                        >
+                          I'm feeling lucky
+                        </Button>
+                      </Grid>
+                    </Grid>
+                  </div>
                 </Container>
-                <Searchbar cocktails={cocktails} setCocktails={setCocktails} />
-                <div className={classes.button}>
-                  <Grid container spacing={4} justifyContent='center'>
-                    <Grid item>
-                      <Button variant='contained' color='primary' onClick={pop}>
-                        Popular Cocktails
-                      </Button>
-                    </Grid>
-                    <Grid item>
-                      <Button
-                        variant='contained'
-                        color='primary'
-                        onClick={latest}
-                      >
-                        Latest Drinks
-                      </Button>
-                    </Grid>
-                    <Grid item>
-                      <Button variant='contained' color='primary' onClick={all}>
-                        All Cocktails
-                      </Button>
-                    </Grid>
-                    <Grid item>
-                      <Button
-                        variant='contained'
-                        color='primary'
-                        startIcon={<MoodIcon />}
-                        onClick={random}
-                      >
-                        I'm feeling lucky
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </div>
-              </Container>
-              <Container></Container>
-              <CocktailGrid cocktails={cocktails} setCocktails={setCocktails} />
-              {/* <ModalRecipe cocktails={cocktails} /> */}
-              {/* <PopularCocktails />
+                <Container></Container>
+                <CocktailGrid
+                  cocktails={cocktails}
+                  setCocktails={setCocktails}
+                />
+                {/* <ModalRecipe cocktails={cocktails} /> */}
+                {/* <PopularCocktails />
             <AllCocktails />
             <MocktailsCocktails /> */}
-              <Footer />
+                <Footer />
+              </div>
             </div>
           </div>
         </main>

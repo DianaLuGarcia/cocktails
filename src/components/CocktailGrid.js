@@ -72,7 +72,7 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
                 <CardContent className={classes.cardContent}>
                   <Container
                     className={classes.strTitleContainer}
-                    backgroundColor='7B8FA1'
+                    backgroundcolor='7B8FA1'
                   >
                     <Typography align='center' gutterBottom variant='h6'>
                       {item.strDrink}

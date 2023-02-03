@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
-    position: "relative",
   },
   // bgImg:background {
   //   content: "",
@@ -35,9 +34,10 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     opacity: "0.6",
   },
+
   container: {
     // backgroundColor: theme.palette.background.paper,
-    backgroundColor: "#00000",
+    backgroundcolor: "#00000",
     padding: theme.spacing(8, 0, 6),
     position: "relative",
   },
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     // height: "100%",
     // backgroundColor: theme.palette.action.hover,
-    backgroundColor: "white",
+    backgroundcolor: "white",
     display: "flex",
     flexDirection: "column",
   },
@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1em",
 
     strTitleContainer: {
-      backgroundColor: "#9e9e9e",
+      backgroundcolor: "#9e9e9e",
     },
   },
 }));
