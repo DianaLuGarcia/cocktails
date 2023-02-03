@@ -45,9 +45,11 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
     for (let i = 1; i < 16; i++) {
       if (item[`strIngredient${i}`]) {
         ingredients.push(
-          <Typography className={classes.typography} lineHeight='1.0'>{`${
-            item[`strIngredient${i}`]
-          } -
+          <Typography
+            key={Date.now()}
+            className={classes.typography}
+            lineHeight='1.0'
+          >{`${item[`strIngredient${i}`]} -
      ${item[`strMeasure${i}`]}`}</Typography>
         );
       }
@@ -61,7 +63,7 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
       <Container className={classes.cardGrid} maxWidth='md'>
         <Grid container spacing={4}>
           {cocktails.map((item, index) => (
-            <Grid item key={item.idDrink} xs={12} sm={6} md={4}>
+            <Grid item key={index} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}

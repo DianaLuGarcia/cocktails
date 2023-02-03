@@ -31,28 +31,21 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       const drinks = await axios.get(
         `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/search.php?s=${search}`
       );
-
-      //returns all cocktails
-      // const all = await axios.get(
-      //   `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/search.php?s=`
-      // );
-      // console.log({ all });
-
-      //Filter by ingredient Not showing ingredients or Instructions because of API Structure.
-      // needs function to map idDrinks or strDrink from ingredient search then compare them using the 'drinks' GET search
+      //Search by Ingredients
       const drinkIngredients = await axios.get(
         `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?i=${search}`
       );
-      console.log(drinkIngredients);
+      console.log(drinks.data.drinks);
       //adding the data from both GET calls
-      let searchResults = [
-        ...drinks.data.drinks,
-        ...drinkIngredients.data.drinks,
-        // ...popularDrinks.data.drinks,
-      ];
+      let searchResults = [];
+      if (drinks.data.drinks) {
+        searchResults = [...drinks.data.drinks];
+      }
+      if (typeof drinkIngredients.data.drinks[0] != "string") {
+        searchResults = [...searchResults, ...drinkIngredients.data.drinks];
+      }
       console.log({ searchResults });
 
-      //Checks for ID duplicates within searchResults, assigns to uniqueSearchResults
       const drinkMap = {};
       const uniqueSearchResults = searchResults.filter((drink) => {
         if (drinkMap[drink.idDrink]) {
@@ -62,27 +55,8 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
           return true;
         }
       });
-      console.log({ uniqueSearchResults });
-      //creates an array of ids for matching search results
-      // const uniqueId = uniqueSearchResults.map((id) => `${id.idDrink}`);
-      // console.log({ uniqueId });
 
-      // let results = [];
-      // let searchById = await Promise.all(
-      //   uniqueId.map(async (id) => {
-      //     const response = await axios.get(
-      //       // `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
-      //       `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/search.php?s=${id}`
-      //     );
-
-      //     return response.data;
-      //     // return response.data;
-      //   })
-      // );
-      // results.push(searchById);
-      // console.log(results.length);
-      // console.log(results[0]);
-
+      //Collects the drink names from search results and adds them to cocktailNames which is then mapped through the api to collect ingredient/instructions
       const cocktailNames = uniqueSearchResults.map(
         (name) => `${name.strDrink}`
       );
@@ -93,23 +67,18 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       let searchByName = await Promise.all(
         strName.map(async (name) => {
           const response = await axios.get(
-            // `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
             `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/search.php?s=${name}`
           );
           return response.data.drinks;
         })
       );
-      //searchByName is returning as a nested array, CocktailGrid component not returning data to DOM.
       console.log({ searchByName });
-      setSearch(" ");
-      /*uniqueSearchResults only searches drinks by name, for example if you search "gin" it will only return drinks with 
-      gin in the name. The end goal is to update the state to "searchByName" so that search results can also include drinks with
-      key ingredient*/
-      setCocktails(uniqueSearchResults);
+      let results = searchByName.flat();
+      console.log({ results });
+      setSearch("");
+      setCocktails(results);
+      console.log({ search });
     }
-    // if (search.status === 200) {
-    //   return search.json();
-    // }
   };
 
   return (
