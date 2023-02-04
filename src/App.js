@@ -124,7 +124,7 @@ function App() {
                       marginBottom='2em'
                     >
                       Sip happens at happy hour. Find easy and unique recipes to
-                      create your new favorite cocktails!{" "}
+                      create your new favorite cocktails.{" "}
                     </Typography>
                   </Container>
                   <Searchbar
