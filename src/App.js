@@ -77,14 +77,6 @@ function App() {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        {/* <AppBar color='primary' position='relative'>
-          <Toolbar>
-            <LocalBarIcon className={classes.icon} /> */}
-        {/* <Link underline='hover' color='inherit' href='#'>
-              Home
-            </Link> */}
-        {/* </Toolbar> */}
-        {/* </AppBar> */}
         <main>
           <div className='overlay'>
             <div
@@ -102,7 +94,7 @@ function App() {
               }}
             >
               <div className={classes.container}>
-                <Container maxWidth='sm' style={{ marginTop: "90px" }}>
+                <Container maxWidth='sm' style={{ marginTop: "80px" }}>
                   <Container>
                     <Typography
                       variant='h4'
