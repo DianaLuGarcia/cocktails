@@ -112,6 +112,7 @@ function App() {
                       id='heading'
                       gutterBottom
                     >
+                      {" "}
                       Happy Hour!
                     </Typography>
                     <Typography
@@ -122,8 +123,8 @@ function App() {
                       paragraph
                       marginBottom='2em'
                     >
-                      The best hour is always happy hour. Find easy and unique
-                      recipes to create your favorite cocktails!{" "}
+                      Sip happens at happy hour. Find easy and unique recipes to
+                      create your new favorite cocktails!{" "}
                     </Typography>
                   </Container>
                   <Searchbar
@@ -137,8 +138,17 @@ function App() {
                           variant='contained'
                           color='primary'
                           onClick={pop}
+                          sx={{
+                            color: "white",
+                            backgroundColor: "#0080ff",
+                            borderRadius: 50,
+                            textTransform: "none",
+                            letterSpacing: "1px",
+                            fontWeight: 600,
+                          }}
+                          disableElevation
                         >
-                          Popular Cocktails
+                          Popular
                         </Button>
                       </Grid>
                       <Grid item>
@@ -146,8 +156,18 @@ function App() {
                           variant='contained'
                           color='primary'
                           onClick={latest}
+                          sx={{
+                            color: "white",
+                            backgroundColor: "#0080ff",
+                            borderRadius: 50,
+                            textTransform: "none",
+                            letterSpacing: "1px",
+                            letterSpacing: "1px",
+                            fontWeight: 600,
+                          }}
+                          disableElevation
                         >
-                          Latest Drinks
+                          Recently Added
                         </Button>
                       </Grid>
                       <Grid item>
@@ -155,6 +175,16 @@ function App() {
                           variant='contained'
                           color='primary'
                           onClick={all}
+                          sx={{
+                            color: "white",
+                            backgroundColor: "#0080ff",
+                            borderRadius: 50,
+                            textTransform: "none",
+                            letterSpacing: "1px",
+                            letterSpacing: "1px",
+                            fontWeight: 600,
+                          }}
+                          disableElevation
                         >
                           All Cocktails
                         </Button>
@@ -165,8 +195,18 @@ function App() {
                           color='primary'
                           startIcon={<MoodIcon />}
                           onClick={random}
+                          sx={{
+                            color: "white",
+                            backgroundColor: "#0080ff",
+                            borderRadius: 50,
+                            textTransform: "none",
+                            letterSpacing: "1px",
+                            letterSpacing: "1px",
+                            fontWeight: 600,
+                          }}
+                          disableElevation
                         >
-                          I'm feeling lucky
+                          I'm feeling LUCKY
                         </Button>
                       </Grid>
                     </Grid>

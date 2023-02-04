@@ -70,9 +70,15 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
                   title={item.strDrink}
                   image={item.strDrinkThumb}
                   loading='lazy'
-                  sx={{ objectFit: "contain" }}
                 />
-                <CardContent className={classes.cardContent}>
+                <CardContent
+                  className={classes.cardContent}
+                  sx={{
+                    padding: "4px",
+                    paddingBottom: "4px",
+                    color: "#303031",
+                  }}
+                >
                   <Container
                     className={classes.strTitleContainer}
                     backgroundcolor='7B8FA1'
@@ -81,7 +87,7 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
                       {item.strDrink}
                     </Typography>
                   </Container>
-                  <CardActions>
+                  <CardActions sx={{ padding: "2px" }}>
                     <ExpandMore
                       expand={expanded}
                       onClick={() => handleExpandClick(item)}

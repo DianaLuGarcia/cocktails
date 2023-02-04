@@ -20,21 +20,18 @@ const useStyles = makeStyles((theme) => ({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
+    cardContent: {
+      padding: "3px",
+      "&:last-child": {
+        paddingBottom: "1px",
+      },
+    },
   },
-  // bgImg:background {
-  //   content: "",
-  //   position: "absolute",
-  //   backgroundImage: `url(${background})`,
-  //   backgroundRepeat: "no-repeat",
-  //   // backgroundAttachment: "scroll, scroll, scroll, fixed",
-  //   height: "auto",
-  //   width: "100%",
-  // },
+
   overlay: {
     position: "absolute",
     opacity: "0.6",
   },
-
   container: {
     // backgroundColor: theme.palette.background.paper,
     backgroundcolor: "#00000",
@@ -47,25 +44,22 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     marginTop: "40px",
   },
+
   cardGrid: {
     padding: "60px 0",
   },
   card: {
-    // height: "100%",
-    // backgroundColor: theme.palette.action.hover,
     backgroundcolor: "white",
     display: "flex",
     flexDirection: "column",
   },
   cardMedia: {
-    // paddingTop: "56.25%", //16:9
     paddingTop: "100%", //16:9
-    // height: "100%",
-    // width: "100%",
     radius: "15px",
   },
   cardContent: {
     flexGrow: 1,
+    // padding: "2px 2px 2px",
   },
 
   typography: {
