@@ -99,7 +99,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
               <TextField
                 fullWidth
                 id='standard-search'
-                placeholder='Try searching "Margarita"'
+                placeholder='What are you look for?'
                 variant='filled'
                 InputProps={{
                   startAdornment: (

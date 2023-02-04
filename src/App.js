@@ -94,7 +94,7 @@ function App() {
               }}
             >
               <div className={classes.container}>
-                <Container maxWidth='sm' style={{ marginTop: "80px" }}>
+                <Container maxWidth='sm' style={{ marginTop: "85px" }}>
                   <Container>
                     <Typography
                       variant='h4'
