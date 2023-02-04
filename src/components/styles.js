@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
-
   overlay: {
     position: "absolute",
     opacity: "0.6",
@@ -59,9 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 1,
-    // padding: "2px 2px 2px",
   },
-
   typography: {
     font: "-apple-system",
     padding: "1em",

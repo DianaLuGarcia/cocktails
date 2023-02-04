@@ -132,7 +132,7 @@ function App() {
                     setCocktails={setCocktails}
                   />
                   <div className={classes.button}>
-                    <Grid container spacing={4} justifyContent='center'>
+                    <Grid container spacing={3} justifyContent='center'>
                       <Grid item>
                         <Button
                           variant='contained'
@@ -144,7 +144,7 @@ function App() {
                             borderRadius: 50,
                             textTransform: "none",
                             letterSpacing: "1px",
-                            fontWeight: 600,
+                            fontWeight: 500,
                           }}
                           disableElevation
                         >
@@ -163,7 +163,7 @@ function App() {
                             textTransform: "none",
                             letterSpacing: "1px",
                             letterSpacing: "1px",
-                            fontWeight: 600,
+                            fontWeight: 500,
                           }}
                           disableElevation
                         >
@@ -182,7 +182,7 @@ function App() {
                             textTransform: "none",
                             letterSpacing: "1px",
                             letterSpacing: "1px",
-                            fontWeight: 600,
+                            fontWeight: 500,
                           }}
                           disableElevation
                         >
@@ -202,7 +202,7 @@ function App() {
                             textTransform: "none",
                             letterSpacing: "1px",
                             letterSpacing: "1px",
-                            fontWeight: 600,
+                            fontWeight: 500,
                           }}
                           disableElevation
                         >
