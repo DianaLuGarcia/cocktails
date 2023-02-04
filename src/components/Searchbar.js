@@ -80,7 +80,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       console.log({ search });
     }
   };
-
+  // window.scrollTo({ top: 675, left: 100, behavior: "smooth" });
   return (
     <>
       <CssBaseline />

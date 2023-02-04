@@ -70,7 +70,7 @@ function App() {
   //   setCocktails(MockDrinks.data.drinks);
   // } //not showing ingredients because the object for non alcoholic does not have it?
 
-  // window.scrollTo({ top: 1200, left: 100, behavior: "smooth" });
+  window.scrollTo({ top: 675, left: 100, behavior: "smooth" });
 
   const classes = useStyles(theme);
   return (

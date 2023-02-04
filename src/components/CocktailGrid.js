@@ -70,6 +70,7 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
                   title={item.strDrink}
                   image={item.strDrinkThumb}
                   loading='lazy'
+                  sx={{ objectFit: "contain" }}
                 />
                 <CardContent className={classes.cardContent}>
                   <Container
