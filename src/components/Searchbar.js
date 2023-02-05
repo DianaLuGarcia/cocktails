@@ -35,7 +35,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       const drinkIngredients = await axios.get(
         `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?i=${search}`
       );
-      console.log(drinks.data.drinks);
+      // console.log(drinks.data.drinks);
       //adding the data from both GET calls
       let searchResults = [];
       if (drinks.data.drinks) {
@@ -44,7 +44,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       if (typeof drinkIngredients.data.drinks[0] != "string") {
         searchResults = [...searchResults, ...drinkIngredients.data.drinks];
       }
-      console.log({ searchResults });
+      // console.log({ searchResults });
 
       const drinkMap = {};
       const uniqueSearchResults = searchResults.filter((drink) => {
@@ -60,9 +60,9 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       const cocktailNames = uniqueSearchResults.map(
         (name) => `${name.strDrink}`
       );
-      console.log({ cocktailNames });
+      // console.log({ cocktailNames });
       let strName = cocktailNames.map((word) => word.replace(" ", "_"));
-      console.log({ strName });
+      // console.log({ strName });
 
       let searchByName = await Promise.all(
         strName.map(async (name) => {
@@ -72,12 +72,12 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
           return response.data.drinks;
         })
       );
-      console.log({ searchByName });
+      // console.log({ searchByName });
       let results = searchByName.flat();
-      console.log({ results });
+      // console.log({ results });
       setSearch("");
       setCocktails(results);
-      console.log({ search });
+      // console.log({ search });
     }
   };
   // window.scrollTo({ top: 675, left: 100, behavior: "smooth" });
