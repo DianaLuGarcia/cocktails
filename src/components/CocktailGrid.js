@@ -57,7 +57,6 @@ const CocktailGrid = ({ cocktails, setCocktails }) => {
     return ingredients;
   };
 
-  // console.log("Ingredients", cocktails);
   return (
     <>
       <Container className={classes.cardGrid} maxWidth='md'>

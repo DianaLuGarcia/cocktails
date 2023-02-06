@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useStyles from "./styles";
 import { createTheme, makeStyles } from "@material-ui/core/styles";
 import {
@@ -16,16 +16,36 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputAdornment from "@mui/material/InputAdornment";
 import CocktailGrid from "./CocktailGrid";
 import { Box } from "@material-ui/core";
-import axios from "axios";
-import { CollectionsBookmarkOutlined } from "@mui/icons-material";
+import axios, { all } from "axios";
+import Autocomplete from "@mui/material/Autocomplete";
 
 const theme = createTheme();
+const url = `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/list.php?i=list`;
 
 const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
-  const [search, setSearch] = useState("");
   const classes = useStyles(theme);
+  const [search, setSearch] = useState("");
 
-  //Search by name
+  /***************Ingredient JSON for Autocomplete*************************/
+  // const [ingredients, setIngredients] = useState([]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await fetch(url);
+  //     result.json().then((json) => {
+  //       setIngredients(json.drinks);
+  //     });
+  //   };
+  //   fetchData();
+  // }, []);
+  // let ingredient = [];
+  // for (var value in ingredients) {
+  // }
+  // //converting json object to string of values
+  // Object.values(
+  //   ingredients.map((item) => ingredient.push(item.strIngredient1))
+  // );
+
+  /********************************************************************/
   const handleSearch = async () => {
     if (search) {
       const drinks = await axios.get(
@@ -35,7 +55,7 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
       const drinkIngredients = await axios.get(
         `https://www.thecocktaildb.com/api/json/v2/${process.env.REACT_APP_RAPID_API_KEY}/filter.php?i=${search}`
       );
-      // console.log(drinks.data.drinks);
+
       //adding the data from both GET calls
       let searchResults = [];
       if (drinks.data.drinks) {
@@ -96,12 +116,21 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
               Find your next favorite drink..
             </Typography>
             <div>
+              {/* {cocktails.map((item, index) => ( */}
+              {/* <Autocomplete
+                disablePortal
+                id='autocomplete'
+                options={ingredient}
+                renderInput={(params) => ( */}
               <TextField
+                // {...params}
                 fullWidth
                 id='standard-search'
                 placeholder='What are you look for?'
                 variant='filled'
                 InputProps={{
+                  // ...params.InputProps,
+                  type: "search",
                   startAdornment: (
                     <InputAdornment position='start'>
                       <SearchIcon />
@@ -118,6 +147,8 @@ const Searchbar = ({ setCocktails, cocktails, setCocktail, cocktail }) => {
                 }}
                 focused
               />
+              {/* )} */}
+              {/* /> */}
             </div>
           </Container>
         </div>
